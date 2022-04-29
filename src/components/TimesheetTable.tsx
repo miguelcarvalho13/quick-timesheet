@@ -1,4 +1,4 @@
-import dayjs from 'dayjs';
+import DateTime from '../formatters/DateTime';
 import TimesheetDay from '../models/TimesheetDay';
 
 interface TimesheetTableProps {
@@ -24,28 +24,21 @@ function TimesheetTable(props: TimesheetTableProps) {
       <tbody>
         {props.daysList.map((timesheetDay) => {
           return (
-            <tr key={timesheetDay.date.toString()}>
-              <td>{timesheetDay.date.toDateString()}</td>
+            <tr key={DateTime.formatDay(timesheetDay.date)}>
+              <td>{DateTime.formatDay(timesheetDay.date)}</td>
               {maxOfIntervals.map((_, i) => {
                 const timeInterval = timesheetDay.timeIntervals[i];
 
                 return (
                   <td key={i}>
-                    {timeInterval ? dayjs.duration(timeInterval.duration, 'minutes').format('H[h] m[m]') : '-'}
+                    {timeInterval ? DateTime.formatMinutes(timeInterval.duration) : '-'}
                   </td>
                 );
               })}
-              <td>{dayjs.duration(sumAll(timesheetDay.timeIntervals.map(x => x.duration)), 'minutes').format('H[h] m[m]')}</td>
+              <td>{DateTime.formatMinutes(sumAll(timesheetDay.timeIntervals.map(x => x.duration)))}</td>
             </tr>
           );
         })}
-        {/* {props.daysList.length &&
-          <tr>
-            <td colSpan={maxOfIntervals.length + 2}>
-              Total: {}
-            </td>
-          </tr>
-        } */}
       </tbody>
     </table>
   );
