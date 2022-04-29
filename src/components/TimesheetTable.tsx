@@ -1,5 +1,5 @@
 import dayjs from 'dayjs';
-import { TimesheetDay } from './../types';
+import TimesheetDay from '../models/TimesheetDay';
 
 interface TimesheetTableProps {
   daysList: TimesheetDay[]
