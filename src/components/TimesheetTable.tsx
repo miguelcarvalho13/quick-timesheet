@@ -26,10 +26,12 @@ function TimesheetTable(props: TimesheetTableProps) {
           return (
             <tr key={timesheetDay.date.toString()}>
               <td>{timesheetDay.date.toDateString()}</td>
-              {timesheetDay.timeIntervals.map((timeInterval) => {
+              {maxOfIntervals.map((_, i) => {
+                const timeInterval = timesheetDay.timeIntervals[i];
+
                 return (
-                  <td key={timeInterval.start.toString()}>
-                    {dayjs.duration(timeInterval.duration, 'minutes').format('H[h] m[m]')}
+                  <td key={i}>
+                    {timeInterval ? dayjs.duration(timeInterval.duration, 'minutes').format('H[h] m[m]') : '-'}
                   </td>
                 );
               })}
