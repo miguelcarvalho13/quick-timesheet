@@ -1,4 +1,10 @@
-import DateTime from '../formatters/DateTime';
+import {
+  formatDay,
+  formatDuration,
+  formatExtraHours,
+  formatHourOfDay,
+  formatTotalHours
+} from '../formatters/DateTime';
 import TimesheetDay from '../models/TimesheetDay';
 
 interface TimesheetTableProps {
@@ -24,19 +30,19 @@ function TimesheetTable(props: TimesheetTableProps) {
       <tbody>
         {props.daysList.map((timesheetDay) => {
           return (
-            <tr key={DateTime.formatDay(timesheetDay.date)}>
-              <td>{DateTime.formatDay(timesheetDay.date)}</td>
+            <tr key={formatDay(timesheetDay.date)}>
+              <td>{formatDay(timesheetDay.date)}</td>
               {maxNumberOfEntries.map((_, i) => {
                 const entry = timesheetDay.intervalsAsEntries[i];
 
                 return (
                   <td key={i}>
-                    {entry ? DateTime.formatHourOfDay(entry) : '-'}
+                    {entry ? formatHourOfDay(entry) : '-'}
                   </td>
                 );
               })}
               <td>
-                {DateTime.formatDuration(timesheetDay.totalDurationInMinutes)}
+                {formatDuration(timesheetDay.totalDurationInMinutes)}
               </td>
             </tr>
           );
@@ -45,8 +51,8 @@ function TimesheetTable(props: TimesheetTableProps) {
       <tfoot>
         <tr>
           <td colSpan={maxNumberOfEntries.length + 2}>
-            Total hours: {DateTime.formatTotalHours(props.daysList)}
-            | Extra hours (8h/day): {DateTime.formatExtraHours(props.daysList)}
+            Total hours: {formatTotalHours(props.daysList)}
+            | Extra hours (8h/day): {formatExtraHours(props.daysList)}
           </td>
         </tr>
       </tfoot>

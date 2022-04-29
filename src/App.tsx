@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import dayjs from 'dayjs';
 import './App.css';
 import TimesheetTable from './components/TimesheetTable';
 import TimesheetDay from './models/TimesheetDay';
