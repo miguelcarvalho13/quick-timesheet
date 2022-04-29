@@ -20,6 +20,7 @@ function TimesheetTable(props: TimesheetTableProps) {
 
   return (
     <table className='timesheet-table'>
+      <caption>Timesheet</caption>
       <thead>
         <tr>
           <th>Day</th>
