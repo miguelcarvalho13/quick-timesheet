@@ -10,6 +10,10 @@ export default class TimesheetDay {
     this.timeIntervals = timeIntervals;
   }
 
+  get intervalsAsEntries(): Date[] {
+    return this.timeIntervals.flatMap((interval) => [interval.start, interval.end]);
+  }
+
   static parse(text: string): TimesheetDay[] {
     function createTimesheetDay([dateString, ...intervalsList]: string[]): TimesheetDay {
       const date = dayjs(dateString, 'DD/MM/YYYY').toDate();

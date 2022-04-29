@@ -10,14 +10,14 @@ function TimesheetTable(props: TimesheetTableProps) {
     return null;
   }
 
-  const maxOfIntervals = Array.from({ length: Math.max(...props.daysList.map(d => d.timeIntervals.length)) })
+  const maxNumberOfEntries = Array.from({ length: Math.max(...props.daysList.map(d => d.intervalsAsEntries.length)) })
 
   return (
     <table className='timesheet-table'>
       <thead>
         <tr>
           <th>Day</th>
-          {maxOfIntervals.map((_, i) => <th key={i}>Interval {i+1}</th>)}
+          {maxNumberOfEntries.map((_, i) => <th key={i}>Entry {i+1}</th>)}
           <th>Total</th>
         </tr>
       </thead>
@@ -26,12 +26,12 @@ function TimesheetTable(props: TimesheetTableProps) {
           return (
             <tr key={DateTime.formatDay(timesheetDay.date)}>
               <td>{DateTime.formatDay(timesheetDay.date)}</td>
-              {maxOfIntervals.map((_, i) => {
-                const timeInterval = timesheetDay.timeIntervals[i];
+              {maxNumberOfEntries.map((_, i) => {
+                const entry = timesheetDay.intervalsAsEntries[i];
 
                 return (
                   <td key={i}>
-                    {timeInterval ? DateTime.formatMinutes(timeInterval.duration) : '-'}
+                    {entry ? DateTime.formatHourOfDay(entry) : '-'}
                   </td>
                 );
               })}
