@@ -47,6 +47,7 @@ export default class TimesheetDay {
     return text
       .trim()
       .split('\n\n')
+      .filter(s => s !== '')
       .map(s => s.split('\n'))
       .map(createTimesheetDay)
   }

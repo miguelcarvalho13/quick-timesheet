@@ -40,7 +40,7 @@ test('converts text to timesheet table', async () => {
   );
 });
 
-test.skip('does not renders the table if no text is provided', async () => {
+test('does not renders the table if no text is provided', async () => {
   const expectedText = ' ';
   const user = userEvent.setup();
   render(<App />);

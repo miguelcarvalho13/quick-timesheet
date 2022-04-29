@@ -41,6 +41,21 @@ describe('parse', () => {
     expect(parsed[0]).toEqual(sample1);
     expect(parsed[1]).toEqual(sample2);
   });
+
+  test('given empty string returns an empty array', () => {
+    const parsed = TimesheetDay.parse('');
+    expect(parsed.length).toBe(0);
+  });
+
+  test('given blank string returns an empty array', () => {
+    const parsed = TimesheetDay.parse(' ');
+    expect(parsed.length).toBe(0);
+  });
+
+  test('given blank string with line breaks returns an empty array', () => {
+    const parsed = TimesheetDay.parse(' \n\n\n    \n\n');
+    expect(parsed.length).toBe(0);
+  });
 });
 
 describe('intervalsAsEntries', () => {
