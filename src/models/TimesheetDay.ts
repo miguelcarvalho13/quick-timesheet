@@ -1,5 +1,6 @@
 import dayjs from 'dayjs';
 import { TimeInterval } from '../types';
+import { sumAll } from '../utils/Array';
 
 export default class TimesheetDay {
   date: Date;
@@ -11,7 +12,20 @@ export default class TimesheetDay {
   }
 
   get intervalsAsEntries(): Date[] {
-    return this.timeIntervals.flatMap((interval) => [interval.start, interval.end]);
+    return this.timeIntervals.flatMap(({ start, end }) => [start, end]);
+  }
+
+  get totalDurationInMinutes(): number {
+    return sumAll(this.timeIntervals.map(({ duration }) => duration));
+  }
+
+  /**
+   * Retrieves the amount of extra minutes made in this day. Taking as a
+   * parameter a base amount of minutes which by default is the equivalent of 8h
+   * per day.
+   */
+  getExtraMinutesMade(baseMinutesPerDay = 8 * 60): number {
+    return this.totalDurationInMinutes - baseMinutesPerDay;
   }
 
   static parse(text: string): TimesheetDay[] {

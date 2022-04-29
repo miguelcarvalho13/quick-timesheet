@@ -35,17 +35,23 @@ function TimesheetTable(props: TimesheetTableProps) {
                   </td>
                 );
               })}
-              <td>{DateTime.formatMinutes(sumAll(timesheetDay.timeIntervals.map(x => x.duration)))}</td>
+              <td>
+                {DateTime.formatDuration(timesheetDay.totalDurationInMinutes)}
+              </td>
             </tr>
           );
         })}
       </tbody>
+      <tfoot>
+        <tr>
+          <td colSpan={maxNumberOfEntries.length + 2}>
+            Total hours: {DateTime.formatTotalHours(props.daysList)}
+            | Extra hours (8h/day): {DateTime.formatExtraHours(props.daysList)}
+          </td>
+        </tr>
+      </tfoot>
     </table>
   );
-}
-
-function sumAll(ns: number[]): number {
-  return ns.reduce((x, y) => x + y, 0);
 }
 
 export default TimesheetTable;
