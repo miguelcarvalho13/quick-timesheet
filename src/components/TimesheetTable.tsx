@@ -6,17 +6,20 @@ interface TimesheetTableProps {
 }
 
 function TimesheetTable(props: TimesheetTableProps) {
+  if (!props.daysList.length) {
+    return null;
+  }
+
   const maxOfIntervals = Array.from({ length: Math.max(...props.daysList.map(d => d.timeIntervals.length)) })
 
   return (
     <table className='timesheet-table'>
       <thead>
-        {maxOfIntervals.length &&
-          <tr>
-            <th>Day</th>
-            {maxOfIntervals.map((_, i) => <th key={i}>Interval {i+1}</th>)}
-            <th>Total</th>
-          </tr>}
+        <tr>
+          <th>Day</th>
+          {maxOfIntervals.map((_, i) => <th key={i}>Interval {i+1}</th>)}
+          <th>Total</th>
+        </tr>
       </thead>
       <tbody>
         {props.daysList.map((timesheetDay) => {
