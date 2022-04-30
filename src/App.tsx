@@ -29,7 +29,7 @@ function App() {
         </textarea>
         <br />
         <input
-          className='bg-sky-500 flex-none px-8 py-3 rounded-md w-fit'
+          className='active:bg-sky-700 bg-sky-500 cursor-pointer flex-none hover:bg-sky-600 px-8 py-3 rounded-md w-fit'
           type='submit'
           value='Convert'
         >
