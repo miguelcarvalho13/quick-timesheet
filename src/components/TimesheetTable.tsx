@@ -19,30 +19,30 @@ function TimesheetTable(props: TimesheetTableProps) {
   const maxNumberOfEntries = Array.from({ length: Math.max(...props.daysList.map(d => d.intervalsAsEntries.length)) })
 
   return (
-    <table className='timesheet-table'>
+    <table className='table-auto border-collapse border border-sky-200 w-full'>
       <caption>Timesheet</caption>
       <thead>
         <tr>
-          <th>Day</th>
-          {maxNumberOfEntries.map((_, i) => <th key={i}>Entry {i+1}</th>)}
-          <th>Total</th>
+          <th className='bg-sky-900 border border-sky-200 sticky top-0'>Day</th>
+          {maxNumberOfEntries.map((_, i) => <th className='bg-sky-900 border border-sky-200 sticky top-0' key={i}>Entry {i+1}</th>)}
+          <th className='bg-sky-900 border border-sky-200 sticky top-0'>Total</th>
         </tr>
       </thead>
       <tbody>
         {props.daysList.map((timesheetDay) => {
           return (
             <tr key={formatDay(timesheetDay.date)}>
-              <td>{formatDay(timesheetDay.date)}</td>
+              <td className='border border-sky-200'>{formatDay(timesheetDay.date)}</td>
               {maxNumberOfEntries.map((_, i) => {
                 const entry = timesheetDay.intervalsAsEntries[i];
 
                 return (
-                  <td key={i}>
+                  <td className='border border-sky-200' key={i}>
                     {entry ? formatHourOfDay(entry) : '-'}
                   </td>
                 );
               })}
-              <td>
+              <td className='border border-sky-200'>
                 {formatDuration(timesheetDay.totalDurationInMinutes)}
               </td>
             </tr>
@@ -51,7 +51,7 @@ function TimesheetTable(props: TimesheetTableProps) {
       </tbody>
       <tfoot>
         <tr>
-          <td colSpan={maxNumberOfEntries.length + 2}>
+          <td className='bg-sky-900 drop-shadow  border border-sky-200 sticky bottom-0' colSpan={maxNumberOfEntries.length + 2}>
             <span>Total hours: {formatTotalHours(props.daysList)}</span>
             <span>&nbsp;|&nbsp;</span>
             <span>Extra hours (8h/day): {formatExtraHours(props.daysList)}</span>
