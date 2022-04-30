@@ -52,8 +52,9 @@ function TimesheetTable(props: TimesheetTableProps) {
       <tfoot>
         <tr>
           <td colSpan={maxNumberOfEntries.length + 2}>
-            Total hours: {formatTotalHours(props.daysList)}
-            | Extra hours (8h/day): {formatExtraHours(props.daysList)}
+            <span>Total hours: {formatTotalHours(props.daysList)}</span>
+            <span>&nbsp;|&nbsp;</span>
+            <span>Extra hours (8h/day): {formatExtraHours(props.daysList)}</span>
           </td>
         </tr>
       </tfoot>

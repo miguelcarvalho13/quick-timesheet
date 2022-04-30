@@ -87,7 +87,7 @@ describe('footer', () => {
     const footerCell =  within(tableFooter).getByRole('cell');
 
     expect(footerCell).toHaveTextContent(
-      /^Total hours: 14h 28m\| Extra hours \(8h\/day\): -1h 32m$/
+      /^Total hours: 14h 28m \| Extra hours \(8h\/day\): -1h 32m$/
     );
   });
 });

@@ -36,7 +36,7 @@ test('converts text to timesheet table', async () => {
 
   const footerCell = within(tableFooter).getByRole('cell');
   expect(footerCell).toHaveTextContent(
-    /^Total hours: 9h 30m\| Extra hours \(8h\/day\): \+1h 30m$/
+    /^Total hours: 9h 30m \| Extra hours \(8h\/day\): \+1h 30m$/
   );
 });
 
