@@ -12,7 +12,7 @@ function App() {
   }
 
   return (
-    <div className='bg-sky-900 font-sans min-h-screen text-sky-100'>
+    <div className='bg-sky-900 font-sans min-h-screen selection:bg-sky-500 text-sky-50'>
       <form
         className='content-center flex flex-col items-center justify-center p-8 space-y-2'
         onSubmit={convertText}
@@ -22,7 +22,7 @@ function App() {
         </label>
         <textarea
           id='text-to-convert'
-          className='bg-sky-700 flex-1 p-1 rounded-sm w-2/3'
+          className='bg-sky-700 flex-auto min-h-[16rem] focus:outline focus:outline-2 outline-sky-200 px-2 py-1 resize-y rounded-sm transition-all duration-75 ease-in-out w-2/3'
           value={textValue}
           onChange={(e) => setTextValue(e.target.value)}
         >
