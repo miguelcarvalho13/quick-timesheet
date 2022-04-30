@@ -19,30 +19,30 @@ function TimesheetTable(props: TimesheetTableProps) {
   const maxNumberOfEntries = Array.from({ length: Math.max(...props.daysList.map(d => d.intervalsAsEntries.length)) })
 
   return (
-    <table className='table-auto border-collapse border border-sky-200 w-full'>
+    <table className='table-auto border-collapse border border-sky-200 w-full p-8'>
       <caption>Timesheet</caption>
       <thead>
         <tr>
-          <th className='bg-sky-900 border border-sky-200 sticky top-0'>Day</th>
-          {maxNumberOfEntries.map((_, i) => <th className='bg-sky-900 border border-sky-200 sticky top-0' key={i}>Entry {i+1}</th>)}
-          <th className='bg-sky-900 border border-sky-200 sticky top-0'>Total</th>
+          <th className='bg-sky-800 border-b border-sky-200 sticky text-left -top-1 px-6 py-3 whitespace-nowrap'>Day</th>
+          {maxNumberOfEntries.map((_, i) => <th className='bg-sky-800 border-b border-sky-200 sticky text-left -top-1 px-6 py-3 whitespace-nowrap' key={i}>Entry {i+1}</th>)}
+          <th className='bg-sky-800 border-b border-sky-200 sticky text-left -top-1 px-6 py-3 whitespace-nowrap'>Total</th>
         </tr>
       </thead>
       <tbody>
         {props.daysList.map((timesheetDay) => {
           return (
             <tr key={formatDay(timesheetDay.date)}>
-              <td className='border border-sky-200'>{formatDay(timesheetDay.date)}</td>
+              <td className='border-b border-sky-200 px-6 py-3 whitespace-nowrap'>{formatDay(timesheetDay.date)}</td>
               {maxNumberOfEntries.map((_, i) => {
                 const entry = timesheetDay.intervalsAsEntries[i];
 
                 return (
-                  <td className='border border-sky-200' key={i}>
+                  <td className='border-b border-sky-200 px-6 py-3 whitespace-nowrap' key={i}>
                     {entry ? formatHourOfDay(entry) : '-'}
                   </td>
                 );
               })}
-              <td className='border border-sky-200'>
+              <td className='border-b border-sky-200 px-6 py-3 whitespace-nowrap'>
                 {formatDuration(timesheetDay.totalDurationInMinutes)}
               </td>
             </tr>
@@ -51,7 +51,7 @@ function TimesheetTable(props: TimesheetTableProps) {
       </tbody>
       <tfoot>
         <tr>
-          <td className='bg-sky-900 drop-shadow  border border-sky-200 sticky bottom-0' colSpan={maxNumberOfEntries.length + 2}>
+          <td className='bg-sky-800 drop-shadow  border-b border-sky-200 sticky bottom-0 px-6 py-3 whitespace-nowrap' colSpan={maxNumberOfEntries.length + 2}>
             <span>Total hours: {formatTotalHours(props.daysList)}</span>
             <span>&nbsp;|&nbsp;</span>
             <span>Extra hours (8h/day): {formatExtraHours(props.daysList)}</span>
