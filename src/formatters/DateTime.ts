@@ -2,8 +2,11 @@ import dayjs from 'dayjs';
 import TimesheetDay from '../models/TimesheetDay';
 import { sumAll } from '../utils/Array';
 
-export function formatDuration(min: number): string {
-  return dayjs.duration(min, 'minutes').format('H[h] m[m]');
+export function formatDuration(minutes: number): string {
+  const duration = dayjs.duration(minutes, 'minutes');
+
+  // TODO: find a better/more standard way to handle this
+  return `${Math.floor(duration.asHours())}h ${duration.minutes()}m`;
 }
 
 export function formatHourOfDay(date: Date): string {

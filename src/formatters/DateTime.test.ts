@@ -13,6 +13,10 @@ describe('formatDuration', () => {
   test('converts 10 minutes to H[m] m[m] format', () => {
     expect(formatDuration(10)).toBe('0h 10m');
   });
+
+  test('converts longer duration to H[m] m[m] format', () => {
+    expect(formatDuration(48*60 + 15)).toBe('48h 15m');
+  });
 });
 
 describe('formatHourOfDay', () => {
