@@ -22,14 +22,14 @@ function App() {
         </label>
         <textarea
           id='text-to-convert'
-          className='bg-sky-700 flex-auto min-h-[16rem] focus:outline focus:outline-2 outline-sky-200 px-2 py-1 resize-y rounded-sm transition-all duration-75 ease-in-out w-2/3'
+          className='bg-sky-700 flex-auto min-h-[16rem] focus:outline focus:outline-2 outline-sky-200 px-2 py-1 resize-y rounded-sm shadow-md transition-all duration-75 ease-in-out w-2/3'
           value={textValue}
           onChange={(e) => setTextValue(e.target.value)}
         >
         </textarea>
         <br />
         <input
-          className='active:bg-sky-700 bg-sky-600 cursor-pointer flex-none hover:bg-sky-500 px-8 py-3 rounded-md shadow-md w-fit'
+          className='active:bg-sky-600 bg-sky-500 cursor-pointer flex-none font-medium hover:bg-sky-400 px-8 py-3 rounded-md shadow-md w-fit'
           type='submit'
           value='Convert'
         >

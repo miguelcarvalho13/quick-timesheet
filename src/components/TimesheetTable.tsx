@@ -19,10 +19,10 @@ function TimesheetTable(props: TimesheetTableProps) {
   const maxNumberOfEntries = Array.from({ length: Math.max(...props.daysList.map(d => d.intervalsAsEntries.length)) })
 
   return (
-    <div className='overflow-x-auto relative rounded-lg shadow-md'>
-      <table className='table-auto w-full text-left'>
+    <div className='overflow-x-auto relative rounded-lg shadow-lg'>
+      <table className='bg-sky-800 table-auto text-left w-full'>
         <caption className='sr-only'>Timesheet</caption>
-        <thead className='bg-sky-800 sticky -top-1 text-sm uppercase'>
+        <thead className='bg-sky-700 sticky -top-1 text-sm uppercase'>
           <tr>
             <th className='px-6 py-3 whitespace-nowrap'>Day</th>
             {maxNumberOfEntries.map((_, i) => {
@@ -38,7 +38,7 @@ function TimesheetTable(props: TimesheetTableProps) {
         <tbody className='text-sky-100 font-thin'>
           {props.daysList.map((timesheetDay) => {
             return (
-              <tr className='border-b border-sky-700' key={formatDay(timesheetDay.date)}>
+              <tr className='border-b border-sky-600' key={formatDay(timesheetDay.date)}>
                 <td className='px-6 py-3 text-sky-50 font-normal whitespace-nowrap'>{formatDay(timesheetDay.date)}</td>
                 {maxNumberOfEntries.map((_, i) => {
                   const entry = timesheetDay.intervalsAsEntries[i];
@@ -56,7 +56,7 @@ function TimesheetTable(props: TimesheetTableProps) {
             );
           })}
         </tbody>
-        <tfoot className='bg-sky-800 bottom-0 sticky'>
+        <tfoot className='bg-sky-700 bottom-0 sticky'>
           <tr>
             <td className='px-6 py-3 whitespace-nowrap' colSpan={maxNumberOfEntries.length + 2}>
               <span>Total hours: {formatTotalHours(props.daysList)}</span>
