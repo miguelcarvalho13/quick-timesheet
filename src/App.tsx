@@ -35,7 +35,7 @@ function App() {
         >
         </input>
       </form>
-      <div className='w-full overflow-x-scroll'>
+      <div className='p-4'>
         <TimesheetTable daysList={daysList} />
       </div>
     </div>
