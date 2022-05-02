@@ -5,7 +5,11 @@ import {
   formatHourOfDay,
   formatTotalHours
 } from '../formatters/DateTime';
+import { formatValidation } from '../formatters/Validator';
 import TimesheetDay from '../models/TimesheetDay';
+import getValidations from '../validators/TimesheetDayValidator';
+import DangerIcon from './Icons/Danger';
+import Tooltip from './Tooltip';
 
 interface TimesheetTableProps {
   daysList: TimesheetDay[]
@@ -16,6 +20,7 @@ function TimesheetTable(props: TimesheetTableProps) {
     return null;
   }
 
+  const validations = getValidations(props.daysList);
   const maxNumberOfEntries = Array.from({ length: Math.max(...props.daysList.map(d => d.intervalsAsEntries.length)) })
 
   return (
@@ -36,10 +41,28 @@ function TimesheetTable(props: TimesheetTableProps) {
           </tr>
         </thead>
         <tbody className='text-sky-100 font-thin'>
-          {props.daysList.map((timesheetDay) => {
+          {props.daysList.map((timesheetDay, timesheetDayIndex) => {
             return (
-              <tr className='border-b border-sky-600' key={formatDay(timesheetDay.date)}>
-                <td className='px-6 py-3 text-sky-50 font-normal whitespace-nowrap'>{formatDay(timesheetDay.date)}</td>
+              <tr className='border-b border-sky-600' key={`${formatDay(timesheetDay.date)}-${timesheetDayIndex}`}>
+                <td className='px-6 py-3 text-sky-50 flex font-normal items-center whitespace-nowrap'>
+                  <span>{formatDay(timesheetDay.date)}</span>
+                  <span>
+                    {validations.has(timesheetDay) &&
+                      <Tooltip button={
+                          <span className='inline-block align-middle ml-2 -mt-2' aria-label='Possible issues tooltip'>
+                            <DangerIcon />
+                          </span>
+                        }
+                      >
+                        <ul className='list-disc pl-4'>
+                          {Array.from(validations.get(timesheetDay) ?? []).map((v) => {
+                            return <li key={v}>{formatValidation(v)}</li>;
+                          })}
+                        </ul>
+                      </Tooltip>
+                    }
+                  </span>
+                </td>
                 {maxNumberOfEntries.map((_, i) => {
                   const entry = timesheetDay.intervalsAsEntries[i];
 

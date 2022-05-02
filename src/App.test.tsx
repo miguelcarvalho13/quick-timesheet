@@ -29,7 +29,7 @@ test('converts text to timesheet table', async () => {
   const [, tableBody, tableFooter] = screen.getAllByRole('rowgroup');
 
   const bodyCells = within(tableBody).getAllByRole('cell');
-  expect(bodyCells[0]).toHaveTextContent(/^29\/04\/2022$/);
+  expect(bodyCells[0]).toHaveTextContent(/29\/04\/2022/);
   expect(bodyCells[1]).toHaveTextContent(/^07:15$/);
   expect(bodyCells[2]).toHaveTextContent(/^16:45$/);
   expect(bodyCells[3]).toHaveTextContent(/^9h 30m$/);
