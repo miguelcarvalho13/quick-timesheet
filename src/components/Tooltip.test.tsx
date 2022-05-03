@@ -5,13 +5,13 @@ import Tooltip from './Tooltip';
 const setup = () => {
   return render(
     <>
-      <div data-testid='click-outside'>Click outside</div>
+      <div data-testid="click-outside">Click outside</div>
       <Tooltip button={'my tooltip button'}>
         <span>My tooltip content</span>
       </Tooltip>
-    </>
-  )
-}
+    </>,
+  );
+};
 
 // TODO: find a way to test the outcome of tailwind classes in this tests instead of the presence of the class
 test('renders the tooltip with a button', () => {

@@ -18,8 +18,8 @@ export function formatDay(date: Date): string {
 }
 
 export function formatTotalHours(timehsheetDays: TimesheetDay[]): string {
-  const totalMinutes =  sumAll(
-    timehsheetDays.map(d => d.totalDurationInMinutes)
+  const totalMinutes = sumAll(
+    timehsheetDays.map((d) => d.totalDurationInMinutes),
   );
 
   return formatDuration(totalMinutes);
@@ -27,10 +27,10 @@ export function formatTotalHours(timehsheetDays: TimesheetDay[]): string {
 
 export function formatExtraHours(
   timesheetDays: TimesheetDay[],
-  baseMinutesPerDay = 8 * 60
+  baseMinutesPerDay = 8 * 60,
 ): string {
   const extraMinutes = sumAll(
-    timesheetDays.map(d => d.getExtraMinutesMade(baseMinutesPerDay))
+    timesheetDays.map((d) => d.getExtraMinutesMade(baseMinutesPerDay)),
   );
   const sign = extraMinutes < 0 ? '-' : '+';
 

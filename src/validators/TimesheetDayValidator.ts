@@ -1,5 +1,5 @@
-import dayjs from "dayjs";
-import TimesheetDay from "../models/TimesheetDay";
+import dayjs from 'dayjs';
+import TimesheetDay from '../models/TimesheetDay';
 
 export enum ValidationTypes {
   DUPLICATED_DATE,
@@ -11,7 +11,7 @@ export enum ValidationTypes {
  * issues (ValidationTypes).
  */
 export default function getValidations(
-  timesheetDays: TimesheetDay[]
+  timesheetDays: TimesheetDay[],
 ): Map<TimesheetDay, Set<ValidationTypes>> {
   const validations = new Map<TimesheetDay, Set<ValidationTypes>>();
 
@@ -39,14 +39,15 @@ export default function getValidations(
 
 function hasDuplicatedDate(
   timesheetDays: TimesheetDay[],
-  subject: TimesheetDay
+  subject: TimesheetDay,
 ): boolean {
   const datesWithoutSubject = timesheetDays
     .filter((d) => d !== subject)
     .map((d) => d.date);
 
-  return datesWithoutSubject
-    .some(((date) => dayjs(date).isSame(subject.date, 'date')));
+  return datesWithoutSubject.some((date) =>
+    dayjs(date).isSame(subject.date, 'date'),
+  );
 }
 
 function hasOutOfOrderIntervals(timesheetDay: TimesheetDay): boolean {
@@ -59,5 +60,5 @@ function hasOutOfOrderIntervals(timesheetDay: TimesheetDay): boolean {
     const previousInterval = intervals[index - 1];
 
     return dayjs(currentInterval).isBefore(previousInterval);
-  })
+  });
 }

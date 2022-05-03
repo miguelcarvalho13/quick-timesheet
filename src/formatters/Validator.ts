@@ -1,4 +1,4 @@
-import { ValidationTypes } from "../validators/TimesheetDayValidator";
+import { ValidationTypes } from '../validators/TimesheetDayValidator';
 
 export function formatValidation(validation: ValidationTypes): string {
   switch (validation) {

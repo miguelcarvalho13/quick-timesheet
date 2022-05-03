@@ -29,17 +29,20 @@ export default class TimesheetDay {
   }
 
   static parse(text: string): TimesheetDay[] {
-    function createTimesheetDay([dateString, ...intervalsList]: string[]): TimesheetDay {
+    function createTimesheetDay([
+      dateString,
+      ...intervalsList
+    ]: string[]): TimesheetDay {
       const date = dayjs(dateString, 'DD/MM/YYYY').toDate();
       const timeIntervals = intervalsList
         .map((s) => s.split('-'))
         .map(([s0, s1]) => {
-          const start = dayjs(`${dateString} ${s0}`, 'DD/MM/YYYY HH:mm')
-          const end = dayjs(`${dateString} ${s1}`, 'DD/MM/YYYY HH:mm')
-          const duration = end.diff(start, 'minute')
+          const start = dayjs(`${dateString} ${s0}`, 'DD/MM/YYYY HH:mm');
+          const end = dayjs(`${dateString} ${s1}`, 'DD/MM/YYYY HH:mm');
+          const duration = end.diff(start, 'minute');
 
-          return { start: start.toDate(), end: end.toDate(), duration }
-        })
+          return { start: start.toDate(), end: end.toDate(), duration };
+        });
 
       return new TimesheetDay(date, timeIntervals);
     }
@@ -47,8 +50,8 @@ export default class TimesheetDay {
     return text
       .trim()
       .split('\n\n')
-      .filter(s => s !== '')
-      .map(s => s.split('\n'))
-      .map(createTimesheetDay)
+      .filter((s) => s !== '')
+      .map((s) => s.split('\n'))
+      .map(createTimesheetDay);
   }
 }

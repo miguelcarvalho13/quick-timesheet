@@ -102,19 +102,25 @@ describe('rows', () => {
     expect(thirdRowCells[7]).toHaveTextContent(/^11h 35m$/);
   });
 
-  test("renders the table with the issues tooltip", async () => {
+  test('renders the table with the issues tooltip', async () => {
     setup();
     const tableBody = screen.getAllByRole('rowgroup')[1];
     const thirdRow = within(tableBody).getAllByRole('row')[2];
     const thirdRowCells = within(thirdRow).getAllByRole('cell');
 
-    const tooltipButton = within(thirdRowCells[0]).getByLabelText('Possible issues tooltip');
+    const tooltipButton = within(thirdRowCells[0]).getByLabelText(
+      'Possible issues tooltip',
+    );
     const tooltip = within(thirdRowCells[0]).getByRole('tooltip');
     expect(tooltipButton).toBeInTheDocument();
     await userEvent.click(tooltipButton);
     expect(tooltip).not.toHaveClass('invisible');
-    expect(tooltip).toHaveTextContent(formatValidation(ValidationTypes.DUPLICATED_DATE));
-    expect(tooltip).toHaveTextContent(formatValidation(ValidationTypes.UNORDERED_TIME_INTERVALS));
+    expect(tooltip).toHaveTextContent(
+      formatValidation(ValidationTypes.DUPLICATED_DATE),
+    );
+    expect(tooltip).toHaveTextContent(
+      formatValidation(ValidationTypes.UNORDERED_TIME_INTERVALS),
+    );
   });
 });
 
@@ -122,10 +128,10 @@ describe('footer', () => {
   test("renders the table's first row with the correct set of cells", () => {
     render(<TimesheetTable daysList={timesheetDays} />);
     const tableFooter = screen.getAllByRole('rowgroup')[2];
-    const footerCell =  within(tableFooter).getByRole('cell');
+    const footerCell = within(tableFooter).getByRole('cell');
 
     expect(footerCell).toHaveTextContent(
-      /^Total hours: 26h 3m \| Extra hours \(8h\/day\): \+2h 3m$/
+      /^Total hours: 26h 3m \| Extra hours \(8h\/day\): \+2h 3m$/,
     );
   });
 });

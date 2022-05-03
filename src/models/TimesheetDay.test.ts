@@ -1,30 +1,24 @@
-import TimesheetDay from "../models/TimesheetDay";
+import TimesheetDay from '../models/TimesheetDay';
 
-const sample1 = new TimesheetDay(
-  new Date('2022-04-29 00:00'),
-  [
-    {
-      duration: 60,
-      start: new Date('2022-04-29 09:15'),
-      end: new Date('2022-04-29 10:15'),
-    },
-  ]
-);
-const sample2 = new TimesheetDay(
-  new Date('2022-04-30 00:00'),
-  [
-    {
-      duration: 3 * 60,
-      start: new Date('2022-04-30 07:10'),
-      end: new Date('2022-04-30 10:10'),
-    },
-    {
-      duration: 3 * 60 + 10,
-      start: new Date('2022-04-30 11:05'),
-      end: new Date('2022-04-30 14:15'),
-    },
-  ]
-);
+const sample1 = new TimesheetDay(new Date('2022-04-29 00:00'), [
+  {
+    duration: 60,
+    start: new Date('2022-04-29 09:15'),
+    end: new Date('2022-04-29 10:15'),
+  },
+]);
+const sample2 = new TimesheetDay(new Date('2022-04-30 00:00'), [
+  {
+    duration: 3 * 60,
+    start: new Date('2022-04-30 07:10'),
+    end: new Date('2022-04-30 10:10'),
+  },
+  {
+    duration: 3 * 60 + 10,
+    start: new Date('2022-04-30 11:05'),
+    end: new Date('2022-04-30 14:15'),
+  },
+]);
 
 describe('parse', () => {
   test('converts string to TimsheetDay[]', () => {

@@ -1,4 +1,4 @@
-import { sumAll } from "./Array"
+import { sumAll } from './Array';
 
 describe('sumAll', () => {
   test('sums all items in an array', () => {

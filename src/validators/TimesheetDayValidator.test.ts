@@ -1,5 +1,5 @@
-import TimesheetDay from "../models/TimesheetDay";
-import getValidations, { ValidationTypes } from "./TimesheetDayValidator";
+import TimesheetDay from '../models/TimesheetDay';
+import getValidations, { ValidationTypes } from './TimesheetDayValidator';
 
 const sample1 = TimesheetDay.parse(`
   28/04/2022
@@ -32,16 +32,28 @@ describe('getValidations', () => {
   test('identifies duplicated dates', () => {
     const validations = getValidations(sample1);
 
-    expect(validations.get(sample1[1])).not.toContain(ValidationTypes.DUPLICATED_DATE);
-    expect(validations.get(sample1[2])).toContain(ValidationTypes.DUPLICATED_DATE);
-    expect(validations.get(sample1[3])).toContain(ValidationTypes.DUPLICATED_DATE);
+    expect(validations.get(sample1[1])).not.toContain(
+      ValidationTypes.DUPLICATED_DATE,
+    );
+    expect(validations.get(sample1[2])).toContain(
+      ValidationTypes.DUPLICATED_DATE,
+    );
+    expect(validations.get(sample1[3])).toContain(
+      ValidationTypes.DUPLICATED_DATE,
+    );
   });
 
   test('identifies unordered time intervals', () => {
     const validations = getValidations(sample1);
 
-    expect(validations.get(sample1[1])).toContain(ValidationTypes.UNORDERED_TIME_INTERVALS);
-    expect(validations.get(sample1[2])).toContain(ValidationTypes.UNORDERED_TIME_INTERVALS);
-    expect(validations.get(sample1[3])).not.toContain(ValidationTypes.UNORDERED_TIME_INTERVALS);
+    expect(validations.get(sample1[1])).toContain(
+      ValidationTypes.UNORDERED_TIME_INTERVALS,
+    );
+    expect(validations.get(sample1[2])).toContain(
+      ValidationTypes.UNORDERED_TIME_INTERVALS,
+    );
+    expect(validations.get(sample1[3])).not.toContain(
+      ValidationTypes.UNORDERED_TIME_INTERVALS,
+    );
   });
 });

@@ -1,5 +1,11 @@
-import TimesheetDay from "../models/TimesheetDay";
-import { formatDay, formatDuration, formatExtraHours, formatHourOfDay, formatTotalHours } from "./DateTime";
+import TimesheetDay from '../models/TimesheetDay';
+import {
+  formatDay,
+  formatDuration,
+  formatExtraHours,
+  formatHourOfDay,
+  formatTotalHours,
+} from './DateTime';
 
 describe('formatDuration', () => {
   test('converts minutes to H[m] m[m] format', () => {
@@ -15,7 +21,7 @@ describe('formatDuration', () => {
   });
 
   test('converts longer duration to H[m] m[m] format', () => {
-    expect(formatDuration(48*60 + 15)).toBe('48h 15m');
+    expect(formatDuration(48 * 60 + 15)).toBe('48h 15m');
   });
 });
 
@@ -84,6 +90,6 @@ describe('formatExtraHours', () => {
       07:10-14:40
     `);
 
-    expect(formatExtraHours(days, 6*60)).toBe('+2h 30m');
+    expect(formatExtraHours(days, 6 * 60)).toBe('+2h 30m');
   });
 });

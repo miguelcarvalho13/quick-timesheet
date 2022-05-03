@@ -1,13 +1,14 @@
-import React, { SyntheticEvent, useState } from "react";
+import React, { SyntheticEvent, useState } from 'react';
 
 interface TooltipProps {
-  button: React.ReactNode,
-  children: React.ReactNode
+  button: React.ReactNode;
+  children: React.ReactNode;
 }
 
 function Tooltip({ button, children }: TooltipProps) {
   const [isTooltipOpen, setTooltipOpen] = useState(false);
-  const [isTooltipOpenThroughClick, setTooltipOpenThroughClick] = useState(false);
+  const [isTooltipOpenThroughClick, setTooltipOpenThroughClick] =
+    useState(false);
 
   function openTooltip(event: SyntheticEvent): void {
     setTooltipOpen(true);
@@ -40,8 +41,10 @@ function Tooltip({ button, children }: TooltipProps) {
         {button}
       </button>
       <div
-        className={`absolute bg-sky-600 font-thin px-3 py-2 rounded-lg shadow-md text-sm transition-opacity z-50 ${isTooltipOpen ? 'opacity-100' : 'invisible opacity-0'}`}
-        role='tooltip'
+        className={`absolute bg-sky-600 font-thin px-3 py-2 rounded-lg shadow-md text-sm transition-opacity z-50 ${
+          isTooltipOpen ? 'opacity-100' : 'invisible opacity-0'
+        }`}
+        role="tooltip"
       >
         {children}
       </div>
