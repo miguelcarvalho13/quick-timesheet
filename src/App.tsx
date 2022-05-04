@@ -17,7 +17,10 @@ function App() {
         className="content-center flex flex-col items-center justify-center p-8 space-y-2"
         onSubmit={convertText}
       >
-        <label className="flex-none" htmlFor="text-to-convert">
+        <label
+          className="flex-none font-medium text-left text-sm w-2/3"
+          htmlFor="text-to-convert"
+        >
           Text to convert
         </label>
         <textarea

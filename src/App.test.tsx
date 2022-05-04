@@ -12,9 +12,9 @@ test('converts text to timesheet table', async () => {
 
   expect(screen.queryByRole('table')).not.toBeInTheDocument();
 
-  await user.click(screen.getByRole('textbox'));
+  await user.click(screen.getByLabelText('Text to convert'));
   await user.keyboard(expectedText);
-  expect(screen.getByRole('textbox')).toHaveValue(expectedText);
+  expect(screen.getByLabelText('Text to convert')).toHaveValue(expectedText);
 
   await user.click(screen.getByRole('button', { name: /^Convert$/ }));
   expect(screen.getByRole('table')).toBeInTheDocument();
@@ -47,9 +47,9 @@ test('does not renders the table if no text is provided', async () => {
 
   expect(screen.queryByRole('table')).not.toBeInTheDocument();
 
-  await user.click(screen.getByRole('textbox'));
+  await user.click(screen.getByLabelText('Text to convert'));
   await user.keyboard(expectedText);
-  expect(screen.getByRole('textbox')).toHaveValue(expectedText);
+  expect(screen.getByLabelText('Text to convert')).toHaveValue(expectedText);
 
   await user.click(screen.getByRole('button', { name: /^Convert$/ }));
   expect(screen.queryByRole('table')).not.toBeInTheDocument();
