@@ -12,3 +12,4 @@ jobs:
     steps:
       - uses: ./.github/workflows/base_setup
       - uses: ./.github/workflows/base_quality
+      - run: echo ''
