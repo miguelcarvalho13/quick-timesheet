@@ -1,0 +1,28 @@
+# Re-usable workflow to setup base node env and install dependencies
+
+name: Setup
+
+on:
+  workflow_call:
+
+jobs:
+  setup:
+    name: Setup Node env
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [16.x]
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: yarn install

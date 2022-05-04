@@ -1,0 +1,14 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  ci:
+    name: CI flow
+    needs: setup
+    runs-on: ubuntu-latest
+    steps:
+      - uses: ./.github/workflows/base_setup
+      - uses: ./.github/workflows/base_quality

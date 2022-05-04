@@ -1,0 +1,28 @@
+name: CD
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build-and-deploy:
+    name: Build and Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - uses: ./.github/workflows/base_setup
+      - uses: ./.github/workflows/base_quality
+
+      - name: Build
+        run: yarn build
+
+      - name: Deploy on GitHub Pages
+        run: |
+          git config --global user.name $user_name
+          git config --global user.email $user_email
+          git remote set-url origin https://${github_token}@github.com/${repository}
+          yarn deploy
+        env:
+          user_name: 'github-actions[bot]'
+          user_email: 'github-actions[bot]@users.noreply.github.com'
+          github_token: ${{ secrets.ACCESS_TOKEN_FOR_DEPLOY }}
+          repository: ${{ github.repository }}
