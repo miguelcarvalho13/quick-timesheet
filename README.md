@@ -46,6 +46,10 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
+### `yarn lint`
+
+Runs all linting scripts defined in the `package.json` (through `lint:...`).
+
 ---
 
 **Note**: This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
