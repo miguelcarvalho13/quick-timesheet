@@ -44,9 +44,10 @@ jobs:
 
   build-and-deploy:
     # only deploy if this is not running in a PR
-    if: ${{ success() && github.event_name !== 'pull_request' }}
+    if: ${{ success() && github.event_name != 'pull_request' }}
     name: Build and Deploy
     needs: ['tests', 'lint']
+    runs-on: ubuntu-latest
     steps:
       - name: Build
         run: yarn build
