@@ -24,6 +24,7 @@
     "eject": "react-scripts eject",
     "lint": "npm-run-all --aggregate-output --parallel lint:*",
     "lint:js": "eslint .",
+    "lint:ts": "tsc --noEmit",
     "predeploy": "yarn build",
     "start": "react-scripts start",
     "test": "react-scripts test"
