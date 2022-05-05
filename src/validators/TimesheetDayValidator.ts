@@ -1,4 +1,3 @@
-import dayjs from 'dayjs';
 import TimesheetDay from '../models/TimesheetDay';
 
 export enum ValidationTypes {
@@ -45,8 +44,8 @@ function hasDuplicatedDate(
     .filter((d) => d !== subject)
     .map((d) => d.date);
 
-  return datesWithoutSubject.some((date) =>
-    dayjs(date).isSame(subject.date, 'date'),
+  return datesWithoutSubject.some(
+    (date) => date.getTime() === subject.date.getTime(),
   );
 }
 
@@ -59,6 +58,6 @@ function hasOutOfOrderIntervals(timesheetDay: TimesheetDay): boolean {
 
     const previousInterval = intervals[index - 1];
 
-    return dayjs(currentInterval).isBefore(previousInterval);
+    return currentInterval < previousInterval;
   });
 }
