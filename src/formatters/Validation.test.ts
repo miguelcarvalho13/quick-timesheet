@@ -1,5 +1,5 @@
 import { ValidationTypes } from '../validators/TimesheetDayValidator';
-import { formatValidation } from './Validator';
+import { formatValidation } from './Validation';
 
 describe('formatValidation', () => {
   test('format ValidationTypes.DUPLICATED_DATE', () => {

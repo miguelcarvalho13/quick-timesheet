@@ -2,7 +2,7 @@ import { render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import TimesheetTable from './TimesheetTable';
 import TimesheetDay from '../models/TimesheetDay';
-import { formatValidation } from '../formatters/Validator';
+import { formatValidation } from '../formatters/Validation';
 import { ValidationTypes } from '../validators/TimesheetDayValidator';
 
 const timesheetDays = TimesheetDay.parse(`

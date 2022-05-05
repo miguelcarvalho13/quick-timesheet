@@ -5,11 +5,9 @@ import {
   formatHourOfDay,
   formatTotalHours,
 } from '../formatters/DateTime';
-import { formatValidation } from '../formatters/Validator';
 import TimesheetDay from '../models/TimesheetDay';
 import getValidations from '../validators/TimesheetDayValidator';
-import DangerIcon from './Icons/Danger';
-import Tooltip from './Tooltip';
+import ValidationsTooltip from './ValidationsTooltip';
 
 interface TimesheetTableProps {
   daysList: TimesheetDay[];
@@ -52,26 +50,9 @@ function TimesheetTable(props: TimesheetTableProps) {
                 <td className="px-6 py-3 text-sky-50 flex font-normal items-center whitespace-nowrap">
                   <span>{formatDay(timesheetDay.date)}</span>
                   <span>
-                    {validations.has(timesheetDay) && (
-                      <Tooltip
-                        button={
-                          <span
-                            className="inline-block align-middle ml-2 -mt-2"
-                            aria-label="Possible issues tooltip"
-                          >
-                            <DangerIcon />
-                          </span>
-                        }
-                      >
-                        <ul className="list-disc pl-4">
-                          {Array.from(validations.get(timesheetDay) ?? []).map(
-                            (v) => {
-                              return <li key={v}>{formatValidation(v)}</li>;
-                            },
-                          )}
-                        </ul>
-                      </Tooltip>
-                    )}
+                    <ValidationsTooltip
+                      validations={validations.get(timesheetDay)}
+                    />
                   </span>
                 </td>
                 {maxNumberOfEntries.map((_, i) => {

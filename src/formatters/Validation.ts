@@ -6,7 +6,5 @@ export function formatValidation(validation: ValidationTypes): string {
       return 'There are other dates with the same date as this one';
     case ValidationTypes.UNORDERED_TIME_INTERVALS:
       return 'The time intervals are out of order';
-    default:
-      return '';
   }
 }
