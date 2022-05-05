@@ -21,7 +21,7 @@ const sample2 = new TimesheetDay(new Date('2022-04-30 00:00'), [
 ]);
 
 describe('parse', () => {
-  test('converts string to TimsheetDay[]', () => {
+  test('converts string to TimesheetDay[]', () => {
     const parsed = TimesheetDay.parse(`
       29/04/2022
       09:15-10:15

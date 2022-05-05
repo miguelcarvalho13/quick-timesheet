@@ -6,8 +6,8 @@ export enum ValidationTypes {
 }
 
 /**
- * Retrieves a map containing as keys TimesheetDay objects and as valus a set of
- * issues (ValidationTypes).
+ * Retrieves a map containing as keys TimesheetDay objects and as values a set
+ * of issues (ValidationTypes).
  */
 export default function getValidations(
   timesheetDays: TimesheetDay[],

@@ -17,9 +17,9 @@ export function formatDay(date: Date): string {
   return dayjs(date).format('DD/MM/YYYY');
 }
 
-export function formatTotalHours(timehsheetDays: TimesheetDay[]): string {
+export function formatTotalHours(timesheetDays: TimesheetDay[]): string {
   const totalMinutes = sumAll(
-    timehsheetDays.map((d) => d.totalDurationInMinutes),
+    timesheetDays.map((d) => d.totalDurationInMinutes),
   );
 
   return formatDuration(totalMinutes);
