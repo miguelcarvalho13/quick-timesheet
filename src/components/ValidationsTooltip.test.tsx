@@ -6,7 +6,7 @@ import ValidationsTooltip from './ValidationsTooltip';
 
 const labelText = 'Possible issues tooltip';
 
-test('renders an nothing if no validations are passed', () => {
+test('renders nothing if no validations are passed', () => {
   render(<ValidationsTooltip validations={undefined} />);
   expect(screen.queryByLabelText(labelText)).not.toBeInTheDocument();
 });
