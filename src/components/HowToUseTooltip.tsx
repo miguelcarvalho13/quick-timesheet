@@ -1,7 +1,11 @@
 import QuestionMarkIcon from './Icons/QuestionMark';
 import Tooltip from './Tooltip';
 
-function HowToUseTooltip() {
+interface HowToUseTooltipProps {
+  className?: string;
+}
+
+function HowToUseTooltip({ className }: HowToUseTooltipProps) {
   return (
     <Tooltip
       button={
@@ -12,6 +16,7 @@ function HowToUseTooltip() {
           <QuestionMarkIcon />
         </span>
       }
+      className={className}
     >
       <h3 className="font-medium">How to use</h3>
       <p role="paragraph">

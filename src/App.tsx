@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import HowToUseTooltip from './components/HowToUseTooltip';
 import TimesheetTable from './components/TimesheetTable';
 import TimesheetDay from './models/TimesheetDay';
 
@@ -13,8 +14,20 @@ function App() {
 
   return (
     <div className="bg-sky-900 font-sans min-h-screen selection:bg-sky-500 text-sky-50">
+      <nav className="backdrop-blur bg-sky-800/70 px-10 py-4 shadow-md sticky top-0 z-30">
+        <div className="flex item-center justify-between w-full">
+          <a href={window.location.href}>
+            <span className="font-bold self-center text-xl whitespace-nowrap">
+              Quick Timesheet
+            </span>
+          </a>
+          <div>
+            <HowToUseTooltip className="mx-4 max-w-[calc(100%-2rem)] right-0 w-[400px]" />
+          </div>
+        </div>
+      </nav>
       <form
-        className="content-center flex flex-col items-center justify-center p-8 space-y-10"
+        className="content-center flex flex-col items-center justify-center p-8 space-y-10 mx-auto"
         onSubmit={convertText}
       >
         <label className="flex flex-col flex-none font-medium text-left text-sm w-2/3">

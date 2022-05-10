@@ -2,6 +2,17 @@ import { render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import App from './App';
 
+test('renders navbar properly', async () => {
+  render(<App />);
+  const navbar = screen.getByRole('navigation');
+  const mainLink = within(navbar).getByRole('link');
+  expect(mainLink).toHaveTextContent('Quick Timesheet');
+  expect(mainLink).toHaveAttribute('href', window.location.href);
+  expect(
+    within(navbar).getByLabelText('How to use tooltip'),
+  ).toBeInTheDocument();
+});
+
 test('converts text to timesheet table', async () => {
   const expectedText = `
     29/04/2022

@@ -6,7 +6,7 @@ const setup = () => {
   return render(
     <>
       <div data-testid="click-outside">Click outside</div>
-      <Tooltip button={'my tooltip button'}>
+      <Tooltip button={'my tooltip button'} className={'custom-class'}>
         <span>My tooltip content</span>
       </Tooltip>
     </>,
@@ -24,6 +24,12 @@ test('renders the tooltip initially hidden', () => {
   const tooltip = screen.getByRole('tooltip', { hidden: true });
   expect(tooltip).toHaveClass('invisible');
   expect(tooltip).toHaveTextContent(/^My tooltip content$/);
+});
+
+test('supports passing custom className to the tooltip', () => {
+  setup();
+  const tooltip = screen.getByRole('tooltip', { hidden: true });
+  expect(tooltip).toHaveClass('custom-class');
 });
 
 test('opens the tooltip when hovering on it and closes when unhovering', async () => {

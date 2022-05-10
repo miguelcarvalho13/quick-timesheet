@@ -31,3 +31,9 @@ test('renders the tooltip with the instructions on how to use', async () => {
       '...',
   );
 });
+
+test('supports passing custom className to the tooltip', () => {
+  render(<HowToUseTooltip className="custom-class" />);
+  const tooltip = screen.getByRole('tooltip', { hidden: true });
+  expect(tooltip).toHaveClass('custom-class');
+});
