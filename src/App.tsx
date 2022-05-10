@@ -13,8 +13,8 @@ function App() {
   }
 
   return (
-    <div className="bg-sky-900 font-sans min-h-screen selection:bg-sky-500 text-sky-50">
-      <nav className="backdrop-blur bg-sky-800/70 px-10 py-4 shadow-md sticky top-0 z-30">
+    <div className="bg-slate-900 font-sans min-h-screen selection:bg-sky-500 text-white">
+      <nav className="backdrop-blur bg-slate-800/70 px-10 py-4 shadow-md sticky top-0 z-30">
         <div className="flex item-center justify-between w-full">
           <a href={window.location.href}>
             <span className="font-bold self-center text-xl whitespace-nowrap">
@@ -33,7 +33,7 @@ function App() {
         <label className="flex flex-col flex-none font-medium text-left text-sm w-2/3">
           Text to convert
           <textarea
-            className="bg-sky-700 flex-auto min-h-[16rem] focus:outline focus:outline-2 mt-2 outline-sky-200 px-2 py-1 resize-y rounded-sm shadow-md transition-all duration-75 ease-in-out"
+            className="bg-slate-700 flex-auto min-h-[16rem] focus:outline focus:outline-2 mt-2 outline-slate-200 px-2 py-1 resize-y rounded-sm shadow-md transition-all duration-75 ease-in-out"
             value={textValue}
             onChange={(e) => setTextValue(e.target.value)}
           ></textarea>

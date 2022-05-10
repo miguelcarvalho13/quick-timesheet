@@ -25,9 +25,9 @@ function TimesheetTable(props: TimesheetTableProps) {
 
   return (
     <div className="overflow-x-auto relative rounded-lg shadow-lg">
-      <table className="bg-sky-800 table-auto text-left w-full">
+      <table className="bg-slate-800 table-auto text-left w-full">
         <caption className="sr-only">Timesheet</caption>
-        <thead className="bg-sky-700 sticky -top-1 text-sm uppercase">
+        <thead className="bg-slate-700 sticky -top-1 text-sm uppercase">
           <tr>
             <th className="px-6 py-3 whitespace-nowrap">Day</th>
             {maxNumberOfEntries.map((_, i) => {
@@ -40,14 +40,14 @@ function TimesheetTable(props: TimesheetTableProps) {
             <th className="px-6 py-3 whitespace-nowrap">Total</th>
           </tr>
         </thead>
-        <tbody className="text-sky-100 font-thin">
+        <tbody className="text-slate-100 font-thin">
           {props.daysList.map((timesheetDay, timesheetDayIndex) => {
             return (
               <tr
-                className="border-b border-sky-600"
+                className="border-b border-slate-600"
                 key={`${formatDay(timesheetDay.date)}-${timesheetDayIndex}`}
               >
-                <td className="px-6 py-3 text-sky-50 flex font-normal items-center whitespace-nowrap">
+                <td className="px-6 py-3 text-slate-50 flex font-normal items-center whitespace-nowrap">
                   <span>{formatDay(timesheetDay.date)}</span>
                   <span>
                     <ValidationsTooltip
@@ -71,7 +71,7 @@ function TimesheetTable(props: TimesheetTableProps) {
             );
           })}
         </tbody>
-        <tfoot className="bg-sky-700 bottom-0 sticky">
+        <tfoot className="bg-slate-700 bottom-0 sticky">
           <tr>
             <td
               className="px-6 py-3 whitespace-nowrap"

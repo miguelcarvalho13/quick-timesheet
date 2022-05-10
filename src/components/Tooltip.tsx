@@ -42,7 +42,7 @@ function Tooltip({ button, className, children }: TooltipProps) {
         {button}
       </button>
       <div
-        className={`absolute bg-sky-600 font-thin px-3 py-2 rounded-lg shadow-md text-sm transition-opacity z-50 ${
+        className={`absolute bg-slate-600 font-thin px-3 py-2 rounded-lg shadow-md text-sm transition-opacity z-50 ${
           className ?? ''
         } ${isTooltipOpen ? 'opacity-100' : 'invisible opacity-0'}`}
         role="tooltip"
