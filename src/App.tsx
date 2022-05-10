@@ -33,7 +33,7 @@ function App() {
         <label className="flex flex-col flex-none font-medium text-left text-sm w-2/3">
           Text to convert
           <textarea
-            className="bg-slate-700 flex-auto min-h-[16rem] focus:outline focus:outline-2 mt-2 outline-slate-200 px-2 py-1 resize-y rounded-sm shadow-md transition-all duration-75 ease-in-out"
+            className="bg-slate-700 flex-auto min-h-[16rem] focus:outline focus:outline-2 mt-2 outline-sky-500 px-2 py-1 resize-y rounded-sm shadow-md transition-all duration-75 ease-in-out"
             value={textValue}
             onChange={(e) => setTextValue(e.target.value)}
           ></textarea>
