@@ -16,10 +16,10 @@ function App() {
     <div className="bg-slate-900 font-sans min-h-screen selection:bg-sky-500 text-white">
       <Navbar />
       <form
-        className="content-center flex flex-col items-center justify-center p-8 space-y-10 mx-auto"
+        className="content-center flex flex-col items-center justify-center px-4 py-8 space-y-10 max-w-screen-md mx-auto"
         onSubmit={convertText}
       >
-        <label className="flex flex-col flex-none font-medium text-left text-sm w-2/3">
+        <label className="flex flex-col flex-none font-medium text-left text-sm w-full">
           Text to convert
           <textarea
             className="bg-slate-700 flex-auto min-h-[16rem] focus:outline focus:outline-2 mt-2 outline-sky-500 px-2 py-1 resize-y rounded-sm shadow-md transition-all duration-75 ease-in-out"
@@ -33,7 +33,7 @@ function App() {
           value="Convert"
         />
       </form>
-      <div className="p-4">
+      <div className="p-4 max-w-fit mx-auto">
         <TimesheetTable daysList={daysList} />
       </div>
     </div>
