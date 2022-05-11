@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Navbar from './components/Navbar';
-import TimesheetTable from './components/TimesheetTable';
+import TimesheetTable from './components/TimesheetTable/TimesheetTable';
 import TimesheetDay from './models/TimesheetDay';
 
 function App() {

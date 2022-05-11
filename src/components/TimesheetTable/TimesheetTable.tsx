@@ -1,13 +1,12 @@
 import {
   formatDay,
   formatDuration,
-  formatExtraHours,
   formatHourOfDay,
-  formatTotalHours,
-} from '../formatters/DateTime';
-import TimesheetDay from '../models/TimesheetDay';
-import getValidations from '../validators/TimesheetDayValidator';
-import ValidationsTooltip from './ValidationsTooltip';
+} from '../../formatters/DateTime';
+import TimesheetDay from '../../models/TimesheetDay';
+import getValidations from '../../validators/TimesheetDayValidator';
+import ValidationsTooltip from '../ValidationsTooltip';
+import SummarizedTotal from './SummarizedTotal';
 
 interface TimesheetTableProps {
   daysList: TimesheetDay[];
@@ -77,11 +76,7 @@ function TimesheetTable(props: TimesheetTableProps) {
               className="px-6 py-3 whitespace-nowrap"
               colSpan={maxNumberOfEntries.length + 2}
             >
-              <span>Total hours: {formatTotalHours(props.daysList)}</span>
-              <span>&nbsp;|&nbsp;</span>
-              <span>
-                Extra hours (8h/day): {formatExtraHours(props.daysList)}
-              </span>
+              <SummarizedTotal timesheetDays={props.daysList} />
             </td>
           </tr>
         </tfoot>

@@ -1,9 +1,9 @@
 import { render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import TimesheetTable from './TimesheetTable';
-import TimesheetDay from '../models/TimesheetDay';
-import { formatValidation } from '../formatters/Validation';
-import { ValidationTypes } from '../validators/TimesheetDayValidator';
+import TimesheetDay from '../../models/TimesheetDay';
+import { formatValidation } from '../../formatters/Validation';
+import { ValidationTypes } from '../../validators/TimesheetDayValidator';
 
 const timesheetDays = TimesheetDay.parse(`
   12/12/2022
@@ -125,7 +125,7 @@ describe('rows', () => {
 });
 
 describe('footer', () => {
-  test("renders the table's first row with the correct set of cells", () => {
+  test('renders the table footer correctly', () => {
     render(<TimesheetTable daysList={timesheetDays} />);
     const tableFooter = screen.getAllByRole('rowgroup')[2];
     const footerCell = within(tableFooter).getByRole('cell');
