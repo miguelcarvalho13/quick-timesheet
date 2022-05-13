@@ -5,13 +5,15 @@ export enum ValidationTypes {
   UNORDERED_TIME_INTERVALS,
 }
 
+export type ValidationMap = Map<TimesheetDay, Set<ValidationTypes>>;
+
 /**
  * Retrieves a map containing as keys TimesheetDay objects and as values a set
  * of issues (ValidationTypes).
  */
 export default function getValidations(
   timesheetDays: TimesheetDay[],
-): Map<TimesheetDay, Set<ValidationTypes>> {
+): ValidationMap {
   const validations = new Map<TimesheetDay, Set<ValidationTypes>>();
 
   // TODO: Investigate if there's a performance issue here regarding the multiple iterations

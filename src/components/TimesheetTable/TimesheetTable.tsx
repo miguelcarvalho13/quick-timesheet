@@ -1,11 +1,7 @@
-import {
-  formatDay,
-  formatDuration,
-  formatHourOfDay,
-} from '../../formatters/DateTime';
+import { useMemo } from 'react';
 import TimesheetDay from '../../models/TimesheetDay';
+import { build } from '../../utils/TimesheetTableData';
 import getValidations from '../../validators/TimesheetDayValidator';
-import ValidationsTooltip from '../ValidationsTooltip';
 import SummarizedTotal from './SummarizedTotal';
 
 interface TimesheetTableProps {
@@ -13,14 +9,16 @@ interface TimesheetTableProps {
 }
 
 function TimesheetTable(props: TimesheetTableProps) {
-  if (!props.daysList.length) {
-    return null;
-  }
+  const validations = useMemo(
+    () => getValidations(props.daysList),
+    [props.daysList],
+  );
+  const { columns, rows } = useMemo(
+    () => build(props.daysList, validations),
+    [props.daysList, validations],
+  );
 
-  const validations = getValidations(props.daysList);
-  const maxNumberOfEntries = Array.from({
-    length: Math.max(...props.daysList.map((d) => d.intervalsAsEntries.length)),
-  });
+  if (!props.daysList.length) return null;
 
   return (
     <div className="overflow-x-auto relative rounded-lg shadow-lg">
@@ -28,44 +26,29 @@ function TimesheetTable(props: TimesheetTableProps) {
         <caption className="sr-only">Timesheet</caption>
         <thead className="bg-slate-700 sticky -top-1 text-sm uppercase">
           <tr>
-            <th className="px-6 py-3 whitespace-nowrap">Day</th>
-            {maxNumberOfEntries.map((_, i) => {
+            {columns.map(({ name }, index) => {
               return (
-                <th className="px-6 py-3 whitespace-nowrap" key={i}>
-                  Entry {i + 1}
+                <th className="px-6 py-3 whitespace-nowrap" key={index}>
+                  {name}
                 </th>
               );
             })}
-            <th className="px-6 py-3 whitespace-nowrap">Total</th>
           </tr>
         </thead>
         <tbody className="text-slate-100 font-thin">
-          {props.daysList.map((timesheetDay, timesheetDayIndex) => {
+          {rows.map((timesheetDayRow, rowIndex) => {
             return (
               <tr
                 className="border-b border-slate-600"
-                key={`${formatDay(timesheetDay.date)}-${timesheetDayIndex}`}
+                key={`${timesheetDayRow.date}-${rowIndex}`}
               >
-                <td className="px-6 py-3 text-slate-50 flex font-normal items-center whitespace-nowrap">
-                  <span>{formatDay(timesheetDay.date)}</span>
-                  <span>
-                    <ValidationsTooltip
-                      validations={validations.get(timesheetDay)}
-                    />
-                  </span>
-                </td>
-                {maxNumberOfEntries.map((_, i) => {
-                  const entry = timesheetDay.intervalsAsEntries[i];
-
+                {columns.map(({ cell }, colIndex) => {
                   return (
-                    <td className="px-6 py-3 whitespace-nowrap" key={i}>
-                      {entry ? formatHourOfDay(entry) : '-'}
+                    <td className="px-6 py-3 whitespace-nowrap" key={colIndex}>
+                      {cell.render(timesheetDayRow)}
                     </td>
                   );
                 })}
-                <td className="px-6 py-3 whitespace-nowrap">
-                  {formatDuration(timesheetDay.totalDurationInMinutes)}
-                </td>
               </tr>
             );
           })}
@@ -74,7 +57,7 @@ function TimesheetTable(props: TimesheetTableProps) {
           <tr>
             <td
               className="px-6 py-3 whitespace-nowrap"
-              colSpan={maxNumberOfEntries.length + 2}
+              colSpan={columns.length}
             >
               <SummarizedTotal timesheetDays={props.daysList} />
             </td>
