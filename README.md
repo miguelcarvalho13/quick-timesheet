@@ -23,7 +23,7 @@ With all of that installed you can proceed to run on your terminal:
 yarn && yarn start
 ```
 
-Then the app should now be running at [http://localhost:300](http://localhost:300).
+Then the app should now be running at [http://localhost:3000](http://localhost:3000).
 
 ## Available Scripts
 
