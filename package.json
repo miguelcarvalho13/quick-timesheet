@@ -60,7 +60,7 @@
   },
   "devDependencies": {
     "autoprefixer": "^10.4.13",
-    "cspell": "^6.27.0",
+    "cspell": "^6.28.0",
     "eslint-config-prettier": "^8.6.0",
     "eslint-plugin-prettier": "^4.2.1",
     "gh-pages": "^5.0.0",
