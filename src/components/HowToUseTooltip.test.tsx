@@ -27,7 +27,7 @@ test('renders the tooltip with the instructions on how to use', async () => {
       '' +
       '06:20-09:15' +
       '10:50-12:30' +
-      '13:40-17:10' +
+      '13:40-17:15' +
       '...',
   );
 });

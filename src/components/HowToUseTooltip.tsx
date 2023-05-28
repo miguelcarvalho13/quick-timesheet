@@ -37,7 +37,7 @@ function HowToUseTooltip({ className }: HowToUseTooltipProps) {
         <br />
         10:50-12:30
         <br />
-        13:40-17:10
+        13:40-17:15
         <br />
         ...
       </p>
