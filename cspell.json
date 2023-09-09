@@ -11,6 +11,7 @@
   "dictionaries": ["project-allowed-words"],
   "ignorePaths": [
     "build",
+    "dist",
     "coverage",
     "node_modules",
     "public",
