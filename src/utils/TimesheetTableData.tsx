@@ -41,7 +41,7 @@ export function build(
 
 function buildColumns(
   timesheetDays: TimesheetDay[],
-  validations: ValidationMap,
+  _validations: ValidationMap, // eslint-disable-line @typescript-eslint/no-unused-vars
 ): TableColumn[] {
   if (!timesheetDays.length) return [];
 
